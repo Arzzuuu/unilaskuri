@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleepy - Älykäs Unilaskuri</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">🧮 Sleepy</div>
+        <nav class="nav-links">
+            <button id="themeToggle" class="theme-btn" aria-label="Vaihda teemaa">🌙 Tumma</button>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+        
+        <!-- PÄÄKORTTI: Visuaalinen ympyrä ja live-seuranta -->
+        <section class="card main-tracker">
+            <div class="status-circle" id="statusCircle">
+                <div class="circle-inner">
+                    <span id="circleStatusText">Hereillä</span>
+                    <small id="circleSubText">Päivä käynnissä</small>
+                </div>
+            </div>
+
+            <div class="live-tracker-box">
+                <button class="cta-btn toggle-sleep-btn" id="toggleSleepBtn">
+                    <span class="btn-icon">💤</span> <span id="btnText">Aloita nukkuminen</span>
+                </button>
+                <div id="liveTimerDisplay" class="live-timer hidden">00:00:00</div>
+            </div>
+        </section>
+
+        <!-- TILASTOKORTTI: Päiväunet ja info -->
+        <section class="card stats-card" id="napInfoBanner">
+            <div class="stats-icon">⏳</div>
+            <div class="stats-content">
+                <small>Aikaa edellisistä päiväunista</small>
+                <strong id="timeSinceLastNap">Ei tietoa</strong>
+            </div>
+        </section>
+
+        <!-- SYÖTTÖKORTTI: Manuaalinen lisäys -->
+        <section class="card form-card">
+            <h3>✍️ Lisää uniaika manuaalisesti</h3>
+            
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="sleepDate">Päivämäärä</label>
+                    <input type="date" id="sleepDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="sleepType">Unen tyyppi</label>
+                    <select id="sleepType">
+                        <option value="yöunet">🌙 Yöunet</option>
+                        <option value="päiväunet">☀️ Päiväunet</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="bedtime">Nukahtamisaika</label>
+                    <input type="time" id="bedtime" required>
+                </div>
+                <div class="form-group">
+                    <label for="wakeup">Heräämisaika</label>
+                    <input type="time" id="wakeup" required>
+                </div>
+            </div>
+
+            <button class="cta-btn secondary" id="laske-btn">Tallenna uniaika</button>
+            <div id="tamanKertainenTulos" class="result"></div>
+        </section>
+
+        <!-- HISTORIAKORTTI: Ryhmitellyt unet -->
+        <section class="card history-card">
+            <h2>📊 Unihistoria päivittäin</h2>
+            <div id="uniPaivaryhmat"></div>
+            <button class="clear-btn" id="tyhjenna-btn">Tyhjennä koko historia</button>
+        </section>
+
+    </main>
+
+</body>
+</html>
